@@ -1,53 +1,50 @@
 import React from 'react';
 
-const themeMap = {
-    cyan: { bg: 'bg-cyan-400', text: 'text-black', accent: 'border-black/20' },
-    rose: { bg: 'bg-rose-400', text: 'text-black', accent: 'border-black/20' },
-    gray: { bg: 'bg-gray-800', text: 'text-white', accent: 'border-white/20' },
-    lime: { bg: 'bg-lime-400', text: 'text-black', accent: 'border-black/20' },
-    purple: { bg: 'bg-purple-700', text: 'text-white', accent: 'border-white/20' },
-};
-
 export const ProjectCard = ({ project, onClick }) => {
-    const theme = themeMap[project.theme];
-
     return (
-        <div onClick={onClick} className={`group relative flex flex-col h-full min-h-[500px] md:min-h-[600px] w-full rounded-3xl overflow-hidden transition-all duration-500 hover:scale-[1.02] cursor-pointer ${theme.bg} ${theme.text}`}>
+        <div
+            onClick={onClick}
+            className="relative w-full h-[80vh] group overflow-hidden bg-gray-900 cursor-pointer border-r border-white/10 last:border-r-0"
+        >
+            {/* Media Background */}
+            <div className="absolute inset-0 w-full h-full">
+                {project.imageUrl.endsWith('.mp4') || project.imageUrl.endsWith('.webm') ? (
+                    <video
+                        src={project.imageUrl}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                ) : (
+                    <img
+                        src={project.imageUrl}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                )}
+            </div>
 
-            {/* Top Details */}
-            <div className="p-8 md:p-10 flex justify-between items-start z-10 relative">
-                <div className="space-y-2">
-                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${theme.accent}`}>
-                        {project.category}
-                    </span>
-                    <p className="text-sm font-medium opacity-80">{project.client} — {project.year}</p>
-                </div>
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center border transition-transform duration-500 group-hover:rotate-[-45deg] ${theme.accent}`}>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+            {/* Hover Content Overlay */}
+            <div className="absolute bottom-0 left-0 right-0 h-full flex flex-col justify-end pointer-events-none">
+                {/* Black background that slides up */}
+                <div className="bg-black/90 backdrop-blur-sm w-full transform translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0 flex flex-col justify-center p-8" style={{ height: '30%' }}>
+                    <div className="flex flex-col gap-2 mb-2">
+                        <span className="text-xs font-bold uppercase tracking-wider text-storm-lime">
+                            {project.category}
+                        </span>
+                        <h3 className="text-white text-2xl font-bold font-serif leading-tight">{project.title}</h3>
+                    </div>
+                    <p className="text-gray-300 text-sm opacity-0 transform translate-y-4 transition-all duration-500 delay-100 group-hover:opacity-100 group-hover:translate-y-0 line-clamp-3">
+                        {project.description}
+                    </p>
                 </div>
             </div>
 
-            {/* Main Content Area */}
-            <div className="flex-grow flex flex-col justify-end p-8 md:p-10 relative z-10 mt-auto">
-                <h3 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-[0.9] tracking-tighter mb-4 max-w-xl">
-                    {project.title}
-                </h3>
-                <p className="text-lg md:text-xl max-w-md opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 hidden md:block">
-                    {project.description}
-                </p>
-            </div>
-
-            {/* Image Background (Reveals on Hover mostly, or acts as texture) */}
-            <div className="absolute inset-0 z-0">
-                <div className={`absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/10 opacity-50`} />
-                {/* We use mix-blend modes to blend the image with the solid color background for a unique look */}
-                <img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-700 mix-blend-overlay grayscale group-hover:grayscale-0 scale-105 group-hover:scale-100"
-                />
+            {/* Default Title (Visible when not hovering) */}
+            <div className="absolute bottom-8 left-8 z-10 group-hover:opacity-0 transition-opacity duration-300">
+                <h3 className="text-white text-3xl font-bold font-serif drop-shadow-lg">{project.title}</h3>
             </div>
         </div>
     );

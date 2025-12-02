@@ -181,7 +181,7 @@ const ScrollHero = () => {
                                     </div>
                                     <div>
                                         <img
-                                            src="https://images.unsplash.com/photo-1699911251220-8e0de3b5ce88?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8b25ld2hlZWx8ZW58MHx8MHx8fDA%3D"
+                                            src="https://res.cloudinary.com/dll8duknt/image/upload/v1764703734/4703e4fc-f91f-4362-a19b-fa09237c36d7.png"
                                             alt=""
                                         />
                                     </div>
