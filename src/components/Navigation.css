@@ -1,0 +1,159 @@
+:root {
+    --nav-height: 80px;
+    --nav-bg: #000;
+    --nav-text-color: #FFF;
+    --nav-font-family: 'Noto Sans', sans-serif;
+    --nav-button-bg: #A7F175;
+    --nav-button-text: #0E1318;
+}
+
+.navigation-header {
+    display: flex;
+    width: 100%;
+    height: var(--nav-height);
+    background: var(--nav-bg);
+    position: fixed;
+    /* Fixed to stick to top */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    /* Ensure it's above other content */
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtle border */
+}
+
+.nav-container {
+    display: flex;
+    width: 100%;
+    max-width: 1288px;
+    /* Match other sections */
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo svg {
+    height: 32px;
+    width: auto;
+}
+
+.nav-logo-text {
+    color: var(--nav-text-color);
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: opacity 0.2s ease;
+}
+
+.nav-logo-text:hover {
+    opacity: 0.8;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-link {
+    color: var(--nav-text-color);
+    font-family: var(--nav-font-family);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease;
+    padding-bottom: 4px;
+    /* Space for the line */
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #fff;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-contact-btn {
+    display: flex;
+    padding: 8px 16px 8px 8px;
+    /* Adjusted padding for icon */
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: var(--nav-button-bg);
+    color: var(--nav-button-text);
+    font-family: var(--nav-font-family);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-contact-btn:hover {
+    transform: scale(1.05);
+    background-color: #b8f590;
+    /* Lighter green on hover */
+}
+
+.nav-contact-icon {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.5);
+    /* Semi-transparent white background for icon container if needed, or just icon */
+    border-radius: 50%;
+    /* If circular icon bg is desired */
+}
+
+/* Mobile Menu Styles (Hidden by default on desktop) */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        /* Hide links on mobile, would need a hamburger menu implementation for full mobile support */
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .nav-contact-btn {
+        display: none;
+        /* Hide contact button on mobile header if space is tight, or keep it */
+    }
+}

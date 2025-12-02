@@ -1,0 +1,214 @@
+.contact-section {
+    --color-black-solid: #000;
+    --item-spacing-108_65: 108.65px;
+    --opacity-15: 0.15;
+    --color-white-898: rgba(255, 255, 255, 0.90);
+    --item-spacing-23_4: 23.4px;
+    --www-affinity-studio-white: #FFF;
+    --font-family-Font-1: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    --font-weight-400: 400;
+    --line-height-76_8: 76.8px;
+    --www-affinity-studio-silver: #C4C4C4;
+    --line-height-24: 24px;
+    --line-height-33_6: 33.6px;
+    --width-80: 80px;
+    --width-636: 636px;
+    --www-affinity-studio-bunker: #0E1318;
+    --font-size-16: 16px;
+
+    background-color: var(--color-black-solid);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    /* Ensure full height for scroll effect */
+}
+
+.contact-container-outer {
+    display: flex;
+    padding: 64px 0 64px 0;
+    /* Removed side padding to fit content to left */
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+}
+
+.contact-content-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    /* Align to start/left */
+    gap: 0;
+    /* Reduced gap */
+    position: relative;
+}
+
+/* Image Fan Section */
+.contact-image-fan {
+    display: flex;
+    width: 50%;
+    /* Take up half the width */
+    height: 100vh;
+    /* Full viewport height for pinning */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.fan-center {
+    position: relative;
+    width: 1px;
+    height: 1px;
+    /* Centered within the fan container */
+}
+
+.fan-card {
+    display: flex;
+    width: 300px;
+    /* Increased size slightly */
+    height: 480px;
+    /* Increased size slightly */
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: absolute;
+    transform-origin: center center;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    /* Initial state for animation */
+    opacity: 0;
+    transform: scale(0.8) rotate(0deg);
+}
+
+.fan-card img {
+    flex: 1 0 0;
+    align-self: stretch;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.fan-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--color-white-898);
+    opacity: var(--opacity-15);
+    pointer-events: none;
+}
+
+/* Text Content Section */
+.contact-text-content {
+    display: flex;
+    width: 50%;
+    /* Take up other half */
+    padding-left: 64px;
+    padding-right: 64px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    gap: var(--item-spacing-23_4);
+    z-index: 10;
+    /* Ensure text is above if overlap */
+}
+
+.contact-heading {
+    align-self: stretch;
+    color: var(--www-affinity-studio-white);
+    font-family: var(--font-family-Font-1);
+    font-size: 71px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.contact-subtext {
+    align-self: stretch;
+    color: var(--www-affinity-studio-silver);
+    font-family: var(--font-family-Font-1);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4;
+    padding-bottom: 8.6px;
+}
+
+.contact-button {
+    display: flex;
+    min-width: 80px;
+    max-width: 636px;
+    padding: 12px 24px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: #A7F175;
+    position: relative;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.contact-button:hover {
+    background: #96e064;
+    transform: scale(1.02);
+}
+
+.contact-button-icon {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+    /* Changed from margin-right to margin-left since icon is after text */
+    transition: transform 0.3s ease;
+}
+
+.contact-button:hover .contact-button-icon {
+    transform: translateX(5px);
+}
+
+.contact-button-text {
+    color: var(--www-affinity-studio-bunker);
+    font-family: var(--font-family-Font-1);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+@media (max-width: 1024px) {
+    .contact-content-wrapper {
+        flex-direction: column;
+    }
+
+    .contact-image-fan {
+        width: 100%;
+        height: 60vh;
+    }
+
+    .contact-text-content {
+        width: 100%;
+        padding: 32px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-heading {
+        font-size: 48px;
+    }
+}
