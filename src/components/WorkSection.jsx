@@ -86,7 +86,7 @@ export const WorkSection = () => {
 
     return (
         <section className="bg-black min-h-screen w-full py-24 relative flex flex-col justify-center overflow-hidden">
-            
+
             {/* Header Area */}
             <div className="container mx-auto px-8 md:px-16 mb-16 flex flex-col md:flex-row justify-between items-end text-center">
                 <div>
@@ -119,15 +119,15 @@ export const WorkSection = () => {
                         className="absolute inset-0 bg-black/90 backdrop-blur-sm"
                         onClick={() => setSelectedProject(null)}
                     ></div>
-                    
+
                     {/* Modal Content */}
-                    <div 
+                    <div
                         className="relative w-full h-full max-w-[95vw] max-h-[95vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row"
                         style={{ backgroundColor: selectedProject.backgroundColor }}
                     >
                         <button
                             onClick={() => setSelectedProject(null)}
-                            className="absolute top-6 right-6 z-50 p-3 bg-black/10 hover:bg-black/20 rounded-full text-black transition-colors"
+                            className="absolute top-6 right-6 z-50 p-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors shadow-lg"
                         >
                             <X size={32} />
                         </button>

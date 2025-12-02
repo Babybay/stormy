@@ -33,7 +33,7 @@ const Navigation = () => {
                 <nav className="nav-links">
                     <button onClick={(e) => handleNavClick(e, 'work')} className="nav-link bg-transparent border-none cursor-pointer font-inherit">Work</button>
                     <button onClick={(e) => handleNavClick(e, 'services')} className="nav-link bg-transparent border-none cursor-pointer font-inherit">Services</button>
-                    <button onClick={(e) => handleNavClick(e, 'mission')} className="nav-link bg-transparent border-none cursor-pointer font-inherit">Mission</button>
+                    <button onClick={(e) => navigate('/mission')} className="nav-link bg-transparent border-none cursor-pointer font-inherit">Mission</button>
                 </nav>
 
                 {/* Contact Button */}
