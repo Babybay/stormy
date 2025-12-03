@@ -4,23 +4,23 @@ import './TestimonialsSection.css';
 const testimonials = [
     {
         id: 1,
-        text: "Working with this team of brilliant, problem solving, passionate, agile Ninjas is such a joy. Their creative ambition & desire to help bring even the most eye watering & challenging projects to life is second to none.",
-        author: "Nikki Cramphorn",
-        role: "Adam&EveDDB",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        author: "Lorem Ipsum",
+        role: "Dolor Sit Amet",
         theme: "pink"
     },
     {
         id: 2,
-        text: "Not content with executing whatever you ask of them to the highest standard, they consistently improve and develop concepts, taking them in exciting new directions I could have never foreseen.",
-        author: "John Wildes",
-        role: "Edelman",
+        text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        author: "Consectetur Adipiscing",
+        role: "Elit Sed",
         theme: "green"
     },
     {
         id: 3,
-        text: "I’ve worked with Creative Giants for many years, and they never fail to deliver… they jump head feet into all challenges and over- deliver every time. What I especially like about them is that they often enhance the creative, as well as being solutions orientated…",
-        author: "Emilie Verlander",
-        role: "Edelman",
+        text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+        author: "Tempor Incididunt",
+        role: "Labore Et Dolore",
         theme: "blue"
     }
 ];
