@@ -97,9 +97,9 @@ export const WorkSection = () => {
             </div>
 
             {/* Full Width Grid Container */}
-            <div className="flex w-full h-[80vh]">
+            <div className="flex flex-wrap w-full md:h-[80vh]">
                 {projects.slice(0, 4).map((project, index) => (
-                    <div key={project.id} className="w-1/4 h-full">
+                    <div key={project.id} className="w-full md:w-1/2 lg:w-1/4 h-[50vh] md:h-full">
                         <ProjectCard
                             project={project}
                             onClick={() => setSelectedProject(project)}
