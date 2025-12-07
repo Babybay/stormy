@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useRef, useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 const faqs = [
     {
@@ -30,6 +31,57 @@ const faqs = [
     }
 ];
 
+const FAQItem = ({ faq, isOpen, toggle }) => {
+    const answerRef = useRef(null);
+    const containerRef = useRef(null);
+
+    useGSAP(() => {
+        if (isOpen) {
+            gsap.to(answerRef.current, {
+                height: 'auto',
+                opacity: 1,
+                duration: 0.4,
+                ease: 'power2.out',
+            });
+        } else {
+            gsap.to(answerRef.current, {
+                height: 0,
+                opacity: 0,
+                duration: 0.3,
+                ease: 'power2.out',
+            });
+        }
+    }, { scope: containerRef, dependencies: [isOpen] });
+
+    return (
+        <div
+            ref={containerRef}
+            className="border-b border-gray-800 group"
+        >
+            <button
+                onClick={toggle}
+                className="w-full py-10 flex items-start justify-between text-left focus:outline-none"
+            >
+                <h3 className={`text-2xl md:text-3xl font-serif font-medium transition-colors duration-300 pr-8 ${isOpen ? 'text-storm-lime' : 'text-white group-hover:text-gray-300'}`}>
+                    {faq.question}
+                </h3>
+                <div className={`mt-1 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-storm-lime' : 'text-gray-500'}`}>
+                    {isOpen ? <Minus size={28} /> : <Plus size={28} />}
+                </div>
+            </button>
+
+            <div
+                ref={answerRef}
+                className="overflow-hidden h-0 opacity-0"
+            >
+                <p className="text-xl text-gray-400 pb-10 leading-relaxed max-w-2xl">
+                    {faq.answer}
+                </p>
+            </div>
+        </div>
+    );
+};
+
 const FAQ = () => {
     const [openId, setOpenId] = useState(1);
 
@@ -55,44 +107,14 @@ const FAQ = () => {
                 {/* Right: Accordion */}
                 <div className="lg:col-span-8">
                     <div className="flex flex-col">
-                        {faqs.map((faq) => {
-                            const isOpen = openId === faq.id;
-
-                            return (
-                                <div
-                                    key={faq.id}
-                                    className="border-b border-gray-800 group"
-                                >
-                                    <button
-                                        onClick={() => setOpenId(isOpen ? null : faq.id)}
-                                        className="w-full py-10 flex items-start justify-between text-left focus:outline-none"
-                                    >
-                                        <h3 className={`text-2xl md:text-3xl font-serif font-medium transition-colors duration-300 pr-8 ${isOpen ? 'text-storm-lime' : 'text-white group-hover:text-gray-300'}`}>
-                                            {faq.question}
-                                        </h3>
-                                        <div className={`mt-1 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-storm-lime' : 'text-gray-500'}`}>
-                                            {isOpen ? <Minus size={28} /> : <Plus size={28} />}
-                                        </div>
-                                    </button>
-
-                                    <AnimatePresence>
-                                        {isOpen && (
-                                            <motion.div
-                                                initial={{ height: 0, opacity: 0 }}
-                                                animate={{ height: 'auto', opacity: 1 }}
-                                                exit={{ height: 0, opacity: 0 }}
-                                                transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
-                                                className="overflow-hidden"
-                                            >
-                                                <p className="text-xl text-gray-400 pb-10 leading-relaxed max-w-2xl">
-                                                    {faq.answer}
-                                                </p>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-                            );
-                        })}
+                        {faqs.map((faq) => (
+                            <FAQItem
+                                key={faq.id}
+                                faq={faq}
+                                isOpen={openId === faq.id}
+                                toggle={() => setOpenId(openId === faq.id ? null : faq.id)}
+                            />
+                        ))}
                     </div>
                 </div>
 

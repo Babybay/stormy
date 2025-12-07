@@ -63,7 +63,7 @@ const Footer = () => {
                             </a>
                             <a href="#" className="hover:opacity-70 transition-opacity">Privacy</a>
                             <a href="#" className="hover:opacity-70 transition-opacity">Terms & Conditions</a>
-                            <span className="text-[#B0A79E]">© 2025 All Rights Reserved, Affinity</span>
+                            <span className="text-[#B0A79E]">© 2025 All Rights Reserved, StormLab.</span>
                         </div>
                     </div>
                 </div>

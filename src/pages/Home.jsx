@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import ScrollHero from '../components/ScrollHero';
-import WorkSection from '../components/WorkSection';
+// import WorkSection from '../components/WorkSection';
 import ServicesSection from '../components/ServicesSection';
 import MissionSection from '../components/MissionSection';
 import TestimonialsSection from '../components/TestimonialsSection';
@@ -26,7 +26,7 @@ const Home = () => {
     return (
         <>
             <ScrollHero />
-            <div id="work"><WorkSection /></div>
+            {/* <div id="work"><WorkSection /></div> */}
             <div id="services"><ServicesSection /></div>
             <div id="mission"><MissionSection /></div>
             <TestimonialsSection />

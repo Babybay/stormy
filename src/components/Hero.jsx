@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 import * as THREE from 'three';
 import { EffectComposer, EffectPass, RenderPass, Effect } from 'postprocessing';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 
 const createTouchTexture = () => {
@@ -609,8 +610,43 @@ const PixelBlast = ({
 // ============================================================================
 
 const Hero = () => {
+    const containerRef = useRef(null);
+    const titleRef = useRef(null);
+    const subtitleRef = useRef(null);
+    const textRef = useRef(null);
+    const buttonRef = useRef(null);
+
+    useGSAP(() => {
+        const tl = gsap.timeline();
+
+        tl.from(titleRef.current, {
+            y: 30,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        })
+            .from(subtitleRef.current, {
+                y: 30,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.8")
+            .from(textRef.current, {
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.6")
+            .from(buttonRef.current, {
+                y: 20,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.4");
+
+    }, { scope: containerRef });
+
     return (
-        <section className="h-screen w-full relative overflow-hidden bg-black">
+        <section ref={containerRef} className="h-screen w-full relative overflow-hidden bg-black">
             {/* Background Effect */}
             <div className="absolute inset-0 z-0">
                 <PixelBlast
@@ -639,45 +675,37 @@ const Hero = () => {
 
             {/* Text Content */}
             <div className="z-10 relative h-full flex flex-col items-center justify-center text-center max-w-6xl mx-auto px-6 pointer-events-none">
-                <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1 }}
+                <h1
+                    ref={titleRef}
                     className="text-7xl md:text-[10rem] font-display font-bold tracking-tighter text-white mb-2 leading-none"
                 >
                     STORMLAB
-                </motion.h1>
+                </h1>
 
-                <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.2 }}
+                <h2
+                    ref={subtitleRef}
                     className="text-2xl md:text-4xl font-heading font-normal text-white/80 mb-10 italic"
                 >
                     Creative freedom that's actually essential
-                </motion.h2>
+                </h2>
 
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.4 }}
+                <p
+                    ref={textRef}
                     className="text-base md:text-lg text-white/60 max-w-xl mx-auto leading-relaxed font-sans"
                 >
                     All the design, strategy, and tech tools you need in one place.
                     <br className="hidden md:block" />
                     Built for creators who refuse to compromise.
-                </motion.p>
+                </p>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.6 }}
+                <div
+                    ref={buttonRef}
                     className="mt-12 pointer-events-auto"
                 >
                     <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-heading font-bold rounded-full text-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105">
                         Get Started
                     </button>
-                </motion.div>
+                </div>
             </div>
         </section>
     );
